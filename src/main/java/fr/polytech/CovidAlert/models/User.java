@@ -22,6 +22,9 @@ public class User {
     @JsonIgnore
     private List<Location> locations;
 
+    @OneToMany(mappedBy="user")
+    private List<Test> tests;
+
     public long getId_user() {
         return id_user;
     }
@@ -76,5 +79,13 @@ public class User {
 
     public void setLocations(List<Location> locations) {
         this.locations = locations;
+    }
+
+    public List<Test> getTests() {
+        return tests;
+    }
+
+    public void setTests(List<Test> tests) {
+        this.tests = tests;
     }
 }
