@@ -22,11 +22,11 @@ and communicate news to them.
 To install and run CovidAlert on your machine, follow these steps:
 1. Download the source code of this repository.
 2. In IntelliJ, open the folder as a project.
-3. Créer un volume docker:
+3. Create a docker volume:
 ```bash
 docker volume create pgdata
 ```
-4. Créer un docker pour gérer les données:
+4. Create a docker to manage data:
 ```bash
 docker run --rm -P -p 127.0.0.1:5432:5432
 -v pgdata:/var/lib/postgresql/data
@@ -34,15 +34,15 @@ docker run --rm -P -p 127.0.0.1:5432:5432
 -e POSTGRES_USER="postgres"
 --name postgres-covid postgres:alpine
 ```
-5. Lancer Postgres sur docker:
+5. Launch Postgres on docker:
 ```bash
 docker exec -it postgres-covid psql -U postgres
 ```
-6. Créer un base de donnée Postgres:
+6. Create a Postgres database:
 ```bash
 create database covid_alert_db;
 ```
-7. Lancer le [Script SQL](https://github.com/AxelCanton/CovidAlert/blob/88eba846a46be0195dfcefa8c7172b39c9d77d18/src/main/resources/sql/init_tables.sql) de création de table
+7. Run the [Script SQL](https://github.com/AxelCanton/CovidAlert/blob/88eba846a46be0195dfcefa8c7172b39c9d77d18/src/main/resources/sql/init_tables.sql) de création de table
 8. Run the application with Graddle (appRun Task).
 
 
