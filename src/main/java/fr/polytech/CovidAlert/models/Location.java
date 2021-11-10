@@ -12,18 +12,30 @@ import java.util.List;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long location_id;
+    private long id_location;
 
     private Double latitude;
     private Double longitude;
-    private Date location_date;
+    private Date date;
 
-    public long getLocation_id() {
-        return location_id;
+    @ManyToOne
+    @JoinColumn(name="id_user", nullable=false)
+    private User user;
+
+    public User getUser() {
+        return user;
     }
 
-    public void setLocation_id(long location_id) {
-        this.location_id = location_id;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public long getId_location() {
+        return id_location;
+    }
+
+    public void setId_location(long id_location) {
+        this.id_location = id_location;
     }
 
     public Double getLatitude() {
@@ -42,11 +54,11 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public Date getLocation_date() {
-        return location_date;
+    public Date getDate() {
+        return date;
     }
 
-    public void setLocation_date(Date location_date) {
-        this.location_date = location_date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

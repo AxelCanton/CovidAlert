@@ -1,14 +1,8 @@
 package fr.polytech.CovidAlert.models;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity(name="users")
@@ -16,25 +10,24 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long user_id;
+    private long id_user;
 
     private String first_name;
     private String last_name;
     private String email;
     private String phone_number;
     private String password;
-    @ManyToMany
-    @JoinTable(name="user_locations",
-            joinColumns = @JoinColumn(name="user_id"),
-            inverseJoinColumns = @JoinColumn(name="location_id"))
+
+    @OneToMany(mappedBy="user")
+    @JsonIgnore
     private List<Location> locations;
 
-    public long getUser_id() {
-        return user_id;
+    public long getId_user() {
+        return id_user;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setId_user(long id_user) {
+        this.id_user = id_user;
     }
 
     public String getFirst_name() {
