@@ -42,7 +42,7 @@ docker exec -it postgres-covid psql -U postgres
 ```bash
 create database covid_alert_db;
 ```
-7. Run the [Script SQL](https://github.com/AxelCanton/CovidAlert/blob/88eba846a46be0195dfcefa8c7172b39c9d77d18/src/main/resources/sql/init_tables.sql) de création de table
+7. Run the [SQL Script](https://github.com/AxelCanton/CovidAlert/blob/88eba846a46be0195dfcefa8c7172b39c9d77d18/src/main/resources/sql/init_tables.sql) de création de table
 8. Run the application with Graddle (appRun Task).
 
 
