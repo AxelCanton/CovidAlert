@@ -18,11 +18,6 @@ public class Location {
     private Double longitude;
     private Date location_date;
 
-
-    @ManyToMany(mappedBy = "locations")
-    @JsonIgnore // Pour ne pas produire des cycles
-    private List<User> users;
-
     public long getLocation_id() {
         return location_id;
     }
@@ -53,13 +48,5 @@ public class Location {
 
     public void setLocation_date(Date location_date) {
         this.location_date = location_date;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 }

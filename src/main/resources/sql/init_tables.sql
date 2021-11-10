@@ -1,5 +1,5 @@
 CREATE TABLE users(
-                      user_id serial NOT NULL PRIMARY KEY,
+                      id_user serial NOT NULL PRIMARY KEY,
                       first_name varchar(30) NOT NULL,
                       last_name varchar(30) NOT NULL,
                       email varchar(80) NOT NULL,
@@ -8,29 +8,25 @@ CREATE TABLE users(
 );
 
 CREATE TABLE locations(
-                          location_id serial PRIMARY KEY,
+                          id_location serial PRIMARY KEY,
                           latitude numeric(18, 16) NOT NULL,
                           longitude numeric(18, 16) NOT NULL,
-                          location_date timestamp without time zone NOT NULL
+                          date timestamp without time zone NOT NULL,
+                          id_user INTEGER NOT NULL REFERENCES users(id_user)
 );
 
-CREATE TABLE user_locations
+CREATE TABLE tests
 (
-    user_id integer NOT NULL REFERENCES users (user_id),
-    location_id integer NOT NULL REFERENCES locations (location_id)
+    id_test serial NOT NULL PRIMARY KEY,
+    date timestamp NOT NULL,
+    isNegative bool NOT NULL,
+    id_user INTEGER NOT NULL REFERENCES users(id_user)
 );
 
-CREATE TABLE persistent_logins
+CREATE TABLE vaccins
 (
-    username varchar(50) NOT NULL REFERENCES users(username),
-    series varchar(64) PRIMARY KEY,
-    token varchar(64) NOT NULL,
-    last_user timestamp NOT NULL
+    id_vaccin serial NOT NULL PRIMARY KEY,
+    date timestamp NOT NULL,
+    nom varchar(64) NOT NULL,
+    id_user INTEGER NOT NULL REFERENCES users(id_user)
 );
-
-CREATE TABLE verif_tokens
-(
-    token varchar(200) PRIMARY KEY,
-    username varchar(64) NOT NULL,
-    expiryDate timestamp NOT NULL
-)
