@@ -20,6 +20,7 @@ public class Location {
 
     @ManyToOne
     @JoinColumn(name="id_user", nullable=false)
+    @JsonIgnore
     private User user;
 
     public User getUser() {

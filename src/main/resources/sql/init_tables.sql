@@ -19,7 +19,8 @@ CREATE TABLE tests
 (
     id_test serial NOT NULL PRIMARY KEY,
     date timestamp NOT NULL,
-    isNegative bool NOT NULL,
+    nom varchar(64) NOT NULL,
+    is_negative bool NOT NULL,
     id_user INTEGER NOT NULL REFERENCES users(id_user)
 );
 
